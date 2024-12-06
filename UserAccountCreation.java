@@ -13,23 +13,49 @@ public class UserAccountCreation {
         // Create JFrame for account creation window
         JFrame frame = new JFrame("Create New Account");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 300);
+        frame.setSize(400, 350);
+        frame.setLocationRelativeTo(null);  // Center the frame on the screen
         frame.setLayout(new BorderLayout());
+
+        // Set background color for the frame
+        frame.getContentPane().setBackground(new Color(245, 245, 245));
 
         // Create a panel for account creation form
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4, 2, 10, 10));
+        panel.setLayout(new GridLayout(5, 2, 15, 15));
+        panel.setBackground(new Color(255, 255, 255));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Add padding around panel
 
         // Add labels and text fields
         JLabel emailLabel = new JLabel("PMU Email:");
+        emailLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         JTextField emailField = new JTextField();
+        emailField.setFont(new Font("Arial", Font.PLAIN, 14));
+        emailField.setBorder(BorderFactory.createLineBorder(new Color(173, 216, 230), 1, true));
+        emailField.setCaretColor(new Color(0, 102, 204));
+
         JLabel passwordLabel = new JLabel("Password:");
+        passwordLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         JPasswordField passwordField = new JPasswordField();
+        passwordField.setFont(new Font("Arial", Font.PLAIN, 14));
+        passwordField.setBorder(BorderFactory.createLineBorder(new Color(173, 216, 230), 1, true));
+        passwordField.setCaretColor(new Color(0, 102, 204));
+
         JLabel confirmPasswordLabel = new JLabel("Confirm Password:");
+        confirmPasswordLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         JPasswordField confirmPasswordField = new JPasswordField();
+        confirmPasswordField.setFont(new Font("Arial", Font.PLAIN, 14));
+        confirmPasswordField.setBorder(BorderFactory.createLineBorder(new Color(173, 216, 230), 1, true));
+        confirmPasswordField.setCaretColor(new Color(0, 102, 204));
 
         // Add Create Account button
         JButton createAccountButton = new JButton("Create Account");
+        createAccountButton.setFont(new Font("Arial", Font.BOLD, 14));
+        createAccountButton.setForeground(Color.WHITE);
+        createAccountButton.setBackground(new Color(0, 102, 204));
+        createAccountButton.setBorder(BorderFactory.createLineBorder(new Color(0, 102, 204), 2, true));
+        createAccountButton.setFocusPainted(false);
+        createAccountButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         // Add components to panel
         panel.add(emailLabel);
@@ -46,6 +72,7 @@ public class UserAccountCreation {
 
         // Add a status label at the bottom
         JLabel statusLabel = new JLabel("", SwingConstants.CENTER);
+        statusLabel.setFont(new Font("Arial", Font.PLAIN, 12));
         frame.add(statusLabel, BorderLayout.SOUTH);
 
         // Set frame visibility
@@ -64,7 +91,7 @@ public class UserAccountCreation {
                         if (!userDatabase.containsKey(email)) {
                             userDatabase.put(email, password);
                             statusLabel.setText("Account created successfully!");
-                            statusLabel.setForeground(Color.GREEN);
+                            statusLabel.setForeground(new Color(0, 128, 0));  // Green color for success
                             JOptionPane.showMessageDialog(frame, "Account created for " + email);
                             frame.dispose(); // Close frame after successful account creation
                         } else {
